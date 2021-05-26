@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Eaux{% endblock %}
+
+{% block expl_active_bar %}active{% endblock %}
+
+{% block header %}
+            <header class="masthead" style="background-color: #0C6EAB;>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-10 mx-auto">
+                            <div class="page-heading">
+                                <h1 align="center">Eaux</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+{% endblock%}
+
+{% block content %}
+
+    <h2>Les flux d'eaux</h2>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <div class="chart" id="bargraph">
+        <script>
+            var graphs3 = {{graph_eaux | safe}};
+            Plotly.plot('bargraph',graphs3,{});
+        </script>
+    </div>
+    <p>Blabla eaux</p>
+
+
+
+{% endblock %}

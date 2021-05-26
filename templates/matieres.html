@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Matières{% endblock %}
+
+{% block expl_active_bar %}active{% endblock %}
+
+{% block header %}
+            <header class="masthead" style="background-color: #0C6EAB;>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-10 mx-auto">
+                            <div class="page-heading">
+                                <h1 align="center">Matières</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+{% endblock%}
+
+{% block content %}
+
+
+    <h2>Les flux de matières</h2>
+    <div class="chart" id="bargraph">
+        <script>
+            var graphs1 = {{graph_matieres | safe}};
+            Plotly.plot('bargraph',graphs1,{});
+        </script>
+    </div>
+    <p>Blabla</p>
+    <hr />
+
+
+
+
+
+{% endblock %}

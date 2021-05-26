@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Energies{% endblock %}
+
+{% block energies_active_bar %}active{% endblock %}
+
+{% block header %}
+            <header class="masthead" style="background-color: #0C6EAB;>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-10 mx-auto">
+                            <div class="page-heading">
+                                <h1 align="center">Energies</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+{% endblock%}
+
+{% block content %}
+    <h2>Les flux d'énergies</h2>
+    <div class="chart" id="bargraph">
+        <script>
+            var graphs2 = {{graph_energies | safe}};
+            Plotly.plot('bargraph',graphs2,{});
+        </script>
+    </div>
+    <p>Blabla energies</p>
+    <hr />
+
+
+{% endblock %}
