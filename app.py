@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+
 import sankeys
 
 app = Flask(__name__)
@@ -36,6 +37,7 @@ def view_eaux():
     return render_template("eaux.html",graph_eaux=graph_eaux)
 
 
+# TEST
 
 if __name__ == '__main__':
     app.run()
