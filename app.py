@@ -37,7 +37,5 @@ def view_eaux():
     return render_template("eaux.html",graph_eaux=graph_eaux)
 
 
-# TESTtt aller
-
 if __name__ == '__main__':
     app.run()
