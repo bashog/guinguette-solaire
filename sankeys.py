@@ -10,9 +10,40 @@ data_mat = pd.read_csv("datas/data_mat.csv", index_col=0)
 img = Image.open('static/img/le-présage-3D.png')
 
 
-def fig_matieres():
-    fig = go.Figure(
+def config(data):
+    index_list = data.index.tolist()
+    n = len(index_list)
+    buttons = []
+    visible = [False for k in range(n)]
+    for k in range(n):
+        visible[k] = True
+        title, label = index_list[k], index_list[k]
+        buttons.append(
+            dict(label=label,
+                 method="update",
+                 args=[{"visible": visible},
+                       {"title": title,
+                        "annotations": []}])
+
+        )
+
+    updatemenus = [
+        dict(
+            active=0,
+            buttons=buttons
+        )]
+    data_list = data_mat.values.tolist()
+    return n, data_list, index_list, updatemenus
+
+
+def fig_matieres(data=data_mat):
+    n, data_list, index, updatemenus = config(data)
+
+    fig = go.Figure()
+
+    fig.add_trace(
         go.Sankey(
+            name=index[0],
             valueformat=".0f",
             valuesuffix="kg/jour",
             arrangement="fixed",
@@ -25,12 +56,37 @@ def fig_matieres():
             link={
                 "source": [0, 2, 1],
                 "target": [2, 3, 1],
-                "value": [2, 2, 1],
+                "value": data_list[0],
                 "label": ["Importations", "Exportations", "Valorisation matière et organique"],
-
             }
         )
     )
+
+    for k in range(1, n):
+        fig.add_trace(
+            go.Sankey(
+                name=index[k],
+                visible=False,
+                valueformat=".0f",
+                valuesuffix="kg/jour",
+                arrangement="fixed",
+                node={
+                    "label": ["Importations", "Valorisation matière et organique", "Le Présage", "Exportations"],
+                    "x": [0.1, 0.5, 0.5, 0.9],
+                    "y": [0.5, 0.8, 0.5, 0.5],
+                    "thickness": 1,
+                    'pad': 110},  # 10 Pixels
+                link={
+                    "source": [0, 2, 1],
+                    "target": [2, 3, 1],
+                    "value": data_list[k],
+                    "label": ["Importations", "Exportations", "Valorisation matière et organique"],
+                }
+            )
+        )
+
+    fig.update_layout(updatemenus=updatemenus)
+
     fig.add_layout_image(
         dict(
             source=img,
