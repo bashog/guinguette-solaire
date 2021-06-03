@@ -48,7 +48,7 @@ def fig_matieres(data=data_mat):
             name=index[0],
             valueformat=".0f",
             valuesuffix="kg/jour",
-            arrangement="fixed",
+            arrangement="snap",
             node={
                 "label": ["Importations", "Valorisation matière et organique", "Le Présage", "Exportations"],
                 "x": [0.1, 0.5, 0.5, 0.9],
@@ -71,7 +71,7 @@ def fig_matieres(data=data_mat):
                 visible=False,
                 valueformat=".0f",
                 valuesuffix="kg/jour",
-                arrangement="fixed",
+                arrangement="snap",
                 node={
                     "label": ["Importations", "Valorisation matière et organique", "Le Présage", "Exportations"],
                     "x": [0.1, 0.5, 0.5, 0.9],
