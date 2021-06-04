@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 from PIL import Image
 
 data_mat = pd.read_csv("datas/data_mat.csv", index_col=0)
-data_energ = pd.read_csv("datas/data_energ.csv", index_col=0)
+data_elec = pd.read_csv("datas/data_elec.csv", index_col=0)
 data_eau = pd.read_csv("datas/data_eau.csv", index_col=0)
 
 img = Image.open('static/img/le-présage-3D.png')
@@ -107,7 +107,7 @@ def fig_matieres(data=data_mat):
     return graphJSON
 
 
-def fig_energies(data=data_energ):
+def fig_elec(data=data_elec):
     n, data_list, index, updatemenus = config(data)
 
     fig = go.Figure()

@@ -17,9 +17,10 @@ def view_pres_proj():
 @app.route("/exploration/")
 def view_expl():
     graph_matieres = sankeys.fig_matieres()
-    graph_energies = sankeys.fig_energies()
+    graph_elec = sankeys.fig_elec()
     graph_eaux = sankeys.fig_eaux()
-    return render_template("exploration.html", graph_matieres=graph_matieres, graph_energies=graph_energies, graph_eaux=graph_eaux)
+    return render_template("exploration.html", graph_matieres=graph_matieres, graph_elec=graph_elec,
+                           graph_eaux=graph_eaux)
 
 @app.route("/exploration/matieres/")
 def view_matieres():
@@ -29,7 +30,7 @@ def view_matieres():
 @app.route("/exploration/energies/")
 def view_energies():
     graph_energies = sankeys.fig_energies()
-    return render_template("energies.html",graph_energies=graph_energies)
+    return render_template("electricite.html", graph_energies=graph_energies)
 
 @app.route("/exploration/eaux/")
 def view_eaux():
