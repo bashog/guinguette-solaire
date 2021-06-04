@@ -27,10 +27,10 @@ def view_matieres():
     graph_matieres = sankeys.fig_matieres()
     return render_template("matieres.html",graph_matieres=graph_matieres)
 
-@app.route("/exploration/energies/")
-def view_energies():
-    graph_energies = sankeys.fig_energies()
-    return render_template("electricite.html", graph_energies=graph_energies)
+@app.route("/exploration/electricite/")
+def view_electricite():
+    graph_elec = sankeys.fig_elec()
+    return render_template("electricite.html", graph_elec=graph_elec)
 
 @app.route("/exploration/eaux/")
 def view_eaux():
