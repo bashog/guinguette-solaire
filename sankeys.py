@@ -49,20 +49,25 @@ def fig_matieres(data=data_mat):
             valueformat=".0f",
             valuesuffix="kg/jour",
             arrangement="snap",
+            textfont={"size": 15,
+                      "color": "black"},
             node={
                 "label": ["Importations", "Valorisation matière et organique", "Le Présage", "Déchets",
                           "Gaz à effet de serre"],
                 "x": [0.05, 0.5, 0.5, 0.95, 0.95],
                 "y": [0.5, 0.6, 0.5, 0.9, 0.1],
                 "thickness": 1,
+                'hoverinfo': 'none',
                 "color": ["#668C4A", "#A6BF4B", '#FFFFFF', "#AD724C", "#2B4B61"],
+                # "hoverlabel": {"font": {"size": 15}},
                 'pad': 80},  # 10 Pixels
             link={
                 "source": [0, 2, 1, 2],
                 "target": [2, 3, 1, 4],
                 "value": data_list[0],
                 "label": ["Importations", "Déchets", "Valorisation matière et organique", "Gaz à effet de serre"],
-                "color": ["#668C4A", "#AD724C", "#A6BF4B", "#2B4B61"]
+                "color": ["#668C4A", "#AD724C", "#A6BF4B", "#2B4B61"],
+                "hoverlabel": {"font": {"size": 15}}
             }
         )
     )
@@ -75,6 +80,8 @@ def fig_matieres(data=data_mat):
                 valueformat=".0f",
                 valuesuffix="kg/jour",
                 arrangement="snap",
+                textfont={"size": 15,
+                          "color": "black"},
                 node={
                     "label": ["Importations", "Valorisation matière et organique", "Le Présage", "Déchets",
                               "Gaz à effet de serre"],
@@ -82,13 +89,16 @@ def fig_matieres(data=data_mat):
                     "y": [0.5, 0.6, 0.5, 0.9, 0.1],
                     "color": ["#668C4A", "#A6BF4B", '#FFFFFF', "#AD724C", "#2B4B61"],
                     "thickness": 1,
+                    # "hoverlabel": {"font": {"size": 15}},
+                    'hoverinfo': 'none',
                     'pad': 80},  # 10 Pixels
                 link={
                     "source": [0, 2, 1, 2],
                     "target": [2, 3, 1, 4],
                     "value": data_list[0],
                     "label": ["Importations", "Déchets", "Valorisation matière et organique", "Gaz à effet de serre"],
-                    "color": ["#668C4A", "#AD724C", "#A6BF4B", "#2B4B61"]
+                    "color": ["#668C4A", "#AD724C", "#A6BF4B", "#2B4B61"],
+                    "hoverlabel": {"font": {"size": 15}}
                 }
             )
         )
@@ -99,15 +109,15 @@ def fig_matieres(data=data_mat):
     fig.add_layout_image(
         dict(
             source=img,
-            x=0.78,
-            y=0.07,
+            x=0.72,
+            y=1.35,
             layer="above",
             xref="paper",
             yref="paper",
-            sizex=1.1,
-            sizey=1.1,
+            sizex=1.5,
+            sizey=1.5,
             xanchor="right",
-            yanchor="bottom"
+            yanchor="top"
         )
     )
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
@@ -124,17 +134,24 @@ def fig_elec(data=data_elec):
             valueformat=".0f",
             valuesuffix="Wh/jour",
             arrangement="fixed",
+            textfont={"size": 15,
+                      "color": "black"},
             node={
-                "label": ["EDF", "Energie verte", "Le Présage"],
-                "x": [0.1, 0.1, 0.5],
-                "y": [0.3, 0.7, 0.5],
+                "label": ["Importation EDF", "Ensoleillement total", "Ensoleillement sur le four solaire",
+                          "Le Présage"],
+                "x": [0.1, 0.1, 0.1, 0.7],
+                "y": [0.1, 0.5, 0.9, 0.5],
+                'hoverinfo': 'none',
                 "thickness": 1,
-                'pad': 110},  # 10 Pixels
+                "color": ["#AD724C", "#EDA20C", "#EDC00C", "#FFFFFF"],
+                'pad': 80},  # 10 Pixels
             link={
-                "source": [0, 1],
-                "target": [2, 2],
+                "source": [0, 1, 2],
+                "target": [3, 3, 3],
                 "value": data_list[0],
+                "hoverlabel": {"font": {"size": 15}},
                 "label": ["Consomnation EDF", "Consomnation energie verte"],
+                "color": ["#AD724C", "#EDA20C", "#EDC00C"],
 
             }
         )
@@ -147,17 +164,24 @@ def fig_elec(data=data_elec):
                 valuesuffix="Wh/jour",
                 arrangement="fixed",
                 visible=False,
+                textfont={"size": 15,
+                          "color": "black"},
                 node={
-                    "label": ["EDF", "Energie verte", "Le Présage"],
-                    "x": [0.1, 0.1, 0.5],
-                    "y": [0.3, 0.7, 0.5],
+                    "label": ["Importation EDF", "Ensoleillement total", "Ensoleillement sur le four solaire",
+                              "Le Présage"],
+                    "x": [0.1, 0.1, 0.1, 0.7],
+                    "y": [0.1, 0.5, 0.9, 0.5],
+                    'hoverinfo': 'none',
+                    "color": ["#D69D00", "#EDA20C", "#EDC00C", "#FFFFFF"],
                     "thickness": 1,
-                    'pad': 110},  # 10 Pixels
+                    'pad': 80},  # 10 Pixels
                 link={
-                    "source": [0, 1],
-                    "target": [2, 2],
+                    "source": [0, 1, 2],
+                    "target": [3, 3, 3],
                     "value": data_list[k],
-                    "label": ["Consomnation EDF", "Consomnation energie verte"],
+                    "hoverlabel": {"font": {"size": 15}},
+                    "label": ["Importation EDF", "Ensoleillement total", "Ensoleillement sur le four solaire"],
+                    "color": ["#AD724C", "#EDA20C", "#EDC00C"],
 
                 }
             )
@@ -168,17 +192,16 @@ def fig_elec(data=data_elec):
     fig.add_layout_image(
         dict(
             source=img,
-            x=0.78,
-            y=0.05,
+            x=1,
+            y=1.3,
             layer="above",
             xref="paper",
             yref="paper",
-            sizex=1,
-            sizey=1,
+            sizex=1.5,
+            sizey=1.5,
             xanchor="right",
-            yanchor="bottom"
-        )
-    )
+            yanchor="top"
+        ))
 
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON
@@ -193,17 +216,23 @@ def fig_eaux(data=data_eau):
             valueformat=".0f",
             valuesuffix="Litre/jour",
             arrangement="fixed",
+            visible=True,
+            textfont={"size": 15,
+                      "color": "black"},
             node={
-                "label": ["Eaux importées", "Eaux collectées", "Le Présage", "Sortie eaux"],
-                "x": [0.1, 0.1, 0.5, 0.9],
-                "y": [0.3, 0.7, 0.5, 0.5],
+                "label": ["Eaux importées", "Eaux tombé", "Le Présage"],
+                "x": [0.1, 0.1, 0.9],
+                "y": [0.3, 0.7, 0.5],
+                "color": ["#423DE6", "#4C95E6", "#FFFFFF"],
                 "thickness": 1,
-                'pad': 110},  # 10 Pixels
+                'hoverinfo': 'none',
+                'pad': 160},  # 10 Pixels
             link={
-                "source": [0, 1, 2],
-                "target": [2, 2, 3],
+                "source": [0, 1],
+                "target": [2, 2],
                 "value": data_list[0],
-                "label": ["Importations", "Exportations", "Valorisation matière et organique"],
+                "label": ["Eaux importées", "Eaux tombé"],
+                "color": ["#423DE6", "#4C95E6"],
 
             }
         )
@@ -216,17 +245,22 @@ def fig_eaux(data=data_eau):
                 valuesuffix="Litre/jour",
                 arrangement="fixed",
                 visible=False,
+                textfont={"size": 15,
+                          "color": "black"},
                 node={
-                    "label": ["Eaux importées", "Eaux collectées", "Le Présage", "Sortie eaux"],
-                    "x": [0.1, 0.1, 0.5, 0.9],
-                    "y": [0.3, 0.7, 0.5, 0.5],
+                    "label": ["Eaux importées", "Eaux tombé", "Le Présage"],
+                    "x": [0.1, 0.1, 0.9],
+                    "y": [0.3, 0.7, 0.5],
+                    "color": ["#423DE6", "#4C95E6", "#FFFFFF"],
                     "thickness": 1,
-                    'pad': 110},  # 10 Pixels
+                    'hoverinfo': 'none',
+                    'pad': 160},  # 10 Pixels
                 link={
-                    "source": [0, 1, 2],
-                    "target": [2, 2, 3],
+                    "source": [0, 1],
+                    "target": [2, 2],
                     "value": data_list[k],
-                    "label": ["Importations", "Exportations", "Valorisation matière et organique"],
+                    "label": ["Eaux importées", "Eaux tombé"],
+                    "color": ["#423DE6", "#4C95E6"],
 
                 }
             )
@@ -237,16 +271,15 @@ def fig_eaux(data=data_eau):
     fig.add_layout_image(
         dict(
             source=img,
-            x=0.78,
-            y=0.05,
+            x=1.1,
+            y=1.3,
             layer="above",
             xref="paper",
             yref="paper",
-            sizex=1,
-            sizey=1,
+            sizex=1.5,
+            sizey=1.5,
             xanchor="right",
-            yanchor="bottom"
-        )
-    )
+            yanchor="top"
+        ))
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON
