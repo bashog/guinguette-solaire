@@ -16,22 +16,35 @@
 
 {% block content %}
     <!-- Content -->
-    <h2>Objectifs du projet</h2>
-    <p>Ce projet a pour but de modéliser les flux entrants / sortants d'eau, de matière et d'électricité de la
-        Guiguette Solaire. Ceci permettra de mieux appréhender le fonctionnement du lieu et donc d'en déduire les
-        avantages et inconvénients d'un tel projet.</p>
-    <h2>L'Équipe</h2>
-    <p>Notre équipe est constituée de 5 étudiants de Centrale Marseille. Clément, le chef de projet, est en contact avec
-        l'équipe du restaurant et coordonne le travail du groupe. Clémence et Basile se chargent de la récolte des
-        données et de l'analyse de ces dernières. Enfin, Léo et Arthur s'occupent de la présentation et du web
-        design.</p>
-    <h2>Déroulement du projet</h2>
-    <p>Pour réaliser notre projet nous avons comme objectif de collecter des données puis de les analyser sous forme
-        pour finalement modéliser les flux entrants et sortants sous forme de diagrammes intéractifs.</p>
-    <figure class="figure-img">
-        <img class="figure-img img-fluid rounded" src="{{url_for('static', filename='img/artist-view.jpg')}}" alt="..." />
+    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+        <h2>Objectifs du projet</h2>
+        <p>Ce projet a pour but de modéliser les flux entrants / sortants d'eau, de matière et d'électricité de la
+            Guiguette Solaire. Ceci permettra de mieux appréhender le fonctionnement du lieu et donc d'en déduire les
+            avantages et inconvénients d'un tel projet.</p>
+    </div>
+
+    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+        <h2>L'Équipe</h2>
+        <p>Notre équipe est constituée de 5 étudiants de Centrale Marseille. Clément, le chef de projet, est en contact
+            avec
+            l'équipe du restaurant et coordonne le travail du groupe. Clémence et Basile se chargent de la récolte des
+            données et de l'analyse de ces dernières. Enfin, Léo et Arthur s'occupent de la présentation et du web
+            design.</p>
+    </div>
+
+    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+        <h2>Déroulement du projet</h2>
+        <p>Pour réaliser notre projet nous avons comme objectif de collecter des données puis de les analyser sous forme
+            pour finalement modéliser les flux entrants et sortants sous forme de diagrammes intéractifs.</p>
+    </div>
+
+    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+
+        <img class="rounded mx-auto d-block" src="{{ url_for('static', filename='img/artist-view.jpg') }}" alt="..."/>
         <br>
-        <figcaption class="figure-caption text-center">Vue d’artiste du projet Le Présage, dessiné par Olivier Nattes</figcaption>
-    </figure>
+        <figcaption class="figure-caption text-center">Vue d’artiste du projet Le Présage, dessiné par Olivier Nattes
+        </figcaption>
+
+    </div>
 
 {% endblock %}

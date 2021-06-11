@@ -16,15 +16,20 @@
 
 {% block content %}
     <h2></h2>
-    <div class="chart" id="bargraph">
-        <script>
+    <div class="shadow-lg bg-white rounded">
+        <div class="chart" id="bargraph">
+            <script>
             var graphs2 = {{ graph_elec | safe }};
             Plotly.plot('bargraph',graphs2,{});
 
-        </script>
+
+            </script>
+        </div>
     </div>
-    <p>Blabla elec</p>
-    <hr/>
+
+    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+        <p>Blabla elec</p>
+    </div>
 
 
 {% endblock %}

@@ -17,36 +17,58 @@
 
 {% block content %}
     <!-- Content -->
-    <p><i>La guinguette solaire</i> est une guinguette situé Traverse de la Rose à Marseille qui envisage de se
-        transformer en un restaurant, nommé <i>Le Présage</i>, implanté à Château-Gombert. Il fonctionne de la manière
-        la plus écologique possible.
-    </p>
-    <figure class="figure-img">
-        <img class="figure-img img-fluid rounded" src="{{url_for('static', filename='img/photoPresage.jpg')}}" alt="..." />
-    </figure>
-    <hr />
-    <div class="row align-items-center">
-        <div class="col">
-            <div id="fb-root"></div>
-            <script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>
-            <!-- Your embedded video player code -->
-            <div class="fb-video" data-href="https://www.facebook.com/mademarseillenet/videos/355957078909145" data-width="500" data-show-text="false"><blockquote cite="https://developers.facebook.com/mademarseillenet/videos/355957078909145/" class="fb-xfbml-parse-ignore"><a href="https://developers.facebook.com/mademarseillenet/videos/355957078909145/">Nouveau : un restaurant solaire à Marseille !</a><p>Vous connaissez le nouveau restaurant Le Présage à Marseille ? Les cuisiniers utilisent le soleil pour cuisiner !</p>Publiée par <a href="https://www.facebook.com/mademarseillenet/">Made in Marseille</a> sur Mercredi 2 septembre 2020
-              </blockquote>
+    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+        <p><i>La guinguette solaire</i> est une guinguette situé Traverse de la Rose à Marseille qui envisage de se
+            transformer en un restaurant, nommé <i>Le Présage</i>, implanté à Château-Gombert. Il fonctionne de la
+            manière
+            la plus écologique possible.
+        </p>
+
+        <figure class="figure-img">
+            <img class="figure-img img-fluid rounded" src="{{url_for('static', filename='img/photoPresage.jpg')}}"
+                 alt="..."/>
+        </figure>
+
+    </div>
+
+
+    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="row align-items-center">
+            <div class="col">
+                <div id="fb-root"></div>
+                <script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>
+                <!-- Your embedded video player code -->
+                <div class="fb-video" data-href="https://www.facebook.com/mademarseillenet/videos/355957078909145"
+                     data-width="500" data-show-text="false">
+                    <blockquote cite="https://developers.facebook.com/mademarseillenet/videos/355957078909145/"
+                                class="fb-xfbml-parse-ignore"><a
+                            href="https://developers.facebook.com/mademarseillenet/videos/355957078909145/">Nouveau : un
+                        restaurant solaire à Marseille !</a>
+                        <p>Vous connaissez le nouveau restaurant Le Présage à Marseille ? Les cuisiniers utilisent le
+                            soleil pour cuisiner !</p>Publiée par <a href="https://www.facebook.com/mademarseillenet/">Made
+                            in Marseille</a> sur Mercredi 2 septembre 2020
+                    </blockquote>
+                </div>
             </div>
-        </div>
-        <div class="col">
-          <p>Ci-contre, une vidéo qui présente la guinguette solaire et tout ce qui lui permet de fonctionner</p>
+            <div class="col">
+                <p>Ci-contre, une vidéo qui présente la guinguette solaire et tout ce qui lui permet de fonctionner</p>
+            </div>
         </div>
     </div>
 
-    <hr />
 
-    <h2>Plan du Présage</h2>
-    <p>Le Présage n'est pas un restaurant comme les autres. Il se démarque par sa volonté d'être autonome ce qui explique la présence d'un bassin de phytoépuration, de panneaux solaires, d'un jardin botanique, etc...
-    </p>
-    <figure class="figure-img">
-        <img class="figure-img img-fluid rounded" src="{{url_for('static', filename='img/planPresage.jpg')}}" alt="..." />
-        <br>
-        <figcaption class="figure-caption text-center">Plan du projet Le Présage, dessiné par l'Atelier Saltus</figcaption>
-    </figure>
+
+    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+        <h2>Plan du Présage</h2>
+        <p>Le Présage n'est pas un restaurant comme les autres. Il se démarque par sa volonté d'être autonome ce qui
+            explique la présence d'un bassin de phytoépuration, de panneaux solaires, d'un jardin botanique, etc...
+        </p>
+        <figure class="figure-img">
+            <img class="figure-img img-fluid rounded" src="{{url_for('static', filename='img/planPresage.jpg')}}"
+                 alt="..."/>
+            <br>
+            <figcaption class="figure-caption text-center">Plan du projet Le Présage, dessiné par l'Atelier Saltus
+            </figcaption>
+        </figure>
+    </div>
 {% endblock %}

@@ -18,13 +18,19 @@
 
     <h2></h2>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <div class="chart" id="bargraph">
-        <script>
+    <div class="shadow-lg bg-white rounded">
+        <div class="chart" id="bargraph">
+            <script>
             var graphs3 = {{graph_eaux | safe}};
             Plotly.plot('bargraph',graphs3,{});
-        </script>
+
+            </script>
+        </div>
     </div>
-    <p>Blabla eaux</p>
+
+    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+        Blabla eaux
+    </div>
 
 
 
