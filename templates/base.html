@@ -15,15 +15,15 @@
 
         <!-- Custom CSS -->
         <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
-	</head>
+    </head>
 
-	<body>
+    <body>
 
 
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0C6EAB;" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url_for('view_home') }}">La Guinguette</a>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('view_home') }}">La Guinguette</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                         data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                         aria-label="Toggle navigation">
@@ -48,26 +48,24 @@
         <!-- Page Header -->
         {% block header %}{% endblock %}
 
-        <!-- Content -->
-        <article>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-md-10 mx-auto">
-                        {% block content %}{% endblock %}
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <hr />
+    <!-- Content -->
+    <section>
+        <div class="container px-4 px-lg-5 mt-5">
 
 
-        <!-- Footer-->
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-md-10 mx-auto">
-                        <ul class="list-inline text-center">
+            {% block content %}{% endblock %}
+        </div>
+    </section>
+
+    <hr/>
+
+
+    <!-- Footer-->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <ul class="list-inline text-center">
                         <p class="copyright text-muted">Copyright &copy; Le Présage 2021</p>
                         </ul>
                     </div>

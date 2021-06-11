@@ -50,16 +50,19 @@ def fig_matieres(data=data_mat):
             valuesuffix="kg/jour",
             arrangement="snap",
             node={
-                "label": ["Importations", "Valorisation matière et organique", "Le Présage", "Exportations"],
-                "x": [0.1, 0.5, 0.5, 0.9],
-                "y": [0.5, 0.8, 0.5, 0.5],
+                "label": ["Importations", "Valorisation matière et organique", "Le Présage", "Déchets",
+                          "Gaz à effet de serre"],
+                "x": [0.05, 0.5, 0.5, 0.95, 0.95],
+                "y": [0.5, 0.6, 0.5, 0.9, 0.1],
                 "thickness": 1,
-                'pad': 110},  # 10 Pixels
+                "color": ["#668C4A", "#A6BF4B", '#FFFFFF', "#AD724C", "#2B4B61"],
+                'pad': 80},  # 10 Pixels
             link={
-                "source": [0, 2, 1],
-                "target": [2, 3, 1],
+                "source": [0, 2, 1, 2],
+                "target": [2, 3, 1, 4],
                 "value": data_list[0],
-                "label": ["Importations", "Exportations", "Valorisation matière et organique"],
+                "label": ["Importations", "Déchets", "Valorisation matière et organique", "Gaz à effet de serre"],
+                "color": ["#668C4A", "#AD724C", "#A6BF4B", "#2B4B61"]
             }
         )
     )
@@ -73,32 +76,36 @@ def fig_matieres(data=data_mat):
                 valuesuffix="kg/jour",
                 arrangement="snap",
                 node={
-                    "label": ["Importations", "Valorisation matière et organique", "Le Présage", "Exportations"],
-                    "x": [0.1, 0.5, 0.5, 0.9],
-                    "y": [0.5, 0.8, 0.5, 0.5],
+                    "label": ["Importations", "Valorisation matière et organique", "Le Présage", "Déchets",
+                              "Gaz à effet de serre"],
+                    "x": [0.05, 0.5, 0.5, 0.95, 0.95],
+                    "y": [0.5, 0.6, 0.5, 0.9, 0.1],
+                    "color": ["#668C4A", "#A6BF4B", '#FFFFFF', "#AD724C", "#2B4B61"],
                     "thickness": 1,
-                    'pad': 110},  # 10 Pixels
+                    'pad': 80},  # 10 Pixels
                 link={
-                    "source": [0, 2, 1],
-                    "target": [2, 3, 1],
-                    "value": data_list[k],
-                    "label": ["Importations", "Exportations", "Valorisation matière et organique"],
+                    "source": [0, 2, 1, 2],
+                    "target": [2, 3, 1, 4],
+                    "value": data_list[0],
+                    "label": ["Importations", "Déchets", "Valorisation matière et organique", "Gaz à effet de serre"],
+                    "color": ["#668C4A", "#AD724C", "#A6BF4B", "#2B4B61"]
                 }
             )
         )
 
     fig.update_layout(updatemenus=updatemenus)
+    fig.update_layout(autosize=True)
 
     fig.add_layout_image(
         dict(
             source=img,
             x=0.78,
-            y=0.05,
+            y=0.07,
             layer="above",
             xref="paper",
             yref="paper",
-            sizex=1,
-            sizey=1,
+            sizex=1.1,
+            sizey=1.1,
             xanchor="right",
             yanchor="bottom"
         )
