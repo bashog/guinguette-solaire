@@ -30,23 +30,23 @@
                     Menu
                     <i class="fas fa-bars"></i>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="{{ url_for('view_home') }}">Accueil</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url_for('view_pres_proj') }}">Présentation du
-                            projet</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url_for('view_expl') }}">Exploration</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url_for('view_matieres') }}">Matières</a></li>
-                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url_for('view_electricite') }}">Electricité</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url_for('view_eaux') }}">Eaux</a></li>
-                    </ul>
-                </div>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('view_home') }}">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('view_pres_proj') }}">Présentation du
+                        projet</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('view_expl') }}">Exploration</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('view_matieres') }}">Matières</a></li>
+                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url_for('view_electricite') }}">Energies</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('view_eaux') }}">Eaux</a></li>
+                </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
 
-        <!-- Page Header -->
-        {% block header %}{% endblock %}
+    <!-- Page Header -->
+    {% block header %}{% endblock %}
 
     <!-- Content -->
     <section>
