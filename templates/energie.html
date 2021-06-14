@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Energie{% endblock %}
+
+{% block energies_active_bar %}active{% endblock %}
+
+{% block header %}
+    <header class="bg-info py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="font-weight-bold">Les flux d'energies</h1>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <h2></h2>
+    <div class="shadow-lg bg-white rounded">
+        <div class="chart" id="bargraph">
+            <script>
+            var graphs2 = {{ graph_energ | safe }};
+            Plotly.plot('bargraph',graphs2,{});
+
+            </script>
+        </div>
+    </div>
+
+    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+        <p>Les données ont été recueillies à la station météo de Marignane-Marseille. La puissance correspond à
+            l’ensoleillement (la moyenne mensuelle de la puissance fournie chaque jour par le soleil par unité de
+            surface) qu’on multiplie par la surface du terrain du restaurant pour avoir la moyenne mensuelle de la
+            puissance reçue chaque jour par le terrain ou par la four solaire.</p>
+        <h6>On utilise la durée d’ouverture du restaurant par mois pour les calculs </h6>
+        <p>Le restaurant est en fonctionnement 5h pour le service du midi et 3h pour le service du soir. Il est ouvert
+            du lundi au vendredi pour le midi et du mercredi au vendredi pour le soir.</p>
+    </div>
+
+
+{% endblock %}

@@ -1,12 +1,9 @@
-import json
-
 import pandas as pd
-import plotly
 import plotly.graph_objects as go
 from PIL import Image
 
 data_mat = pd.read_csv("datas/data_mat.csv", index_col=0)
-data_elec = pd.read_csv("datas/data_elec.csv", index_col=0)
+data_energ = pd.read_csv("datas/data_energ.csv", index_col=0)
 data_eau = pd.read_csv("datas/data_eau.csv", index_col=0)
 
 img = Image.open('static/img/le-présage-3D.png')
@@ -65,7 +62,7 @@ def fig_matieres(data=data_mat):
             valueformat=".0f",
             valuesuffix="kg/jour",
             arrangement="snap",
-            textfont={"size": 12,
+            textfont={"size": 13,
                       "color": "black"},
             node={
                 "label": label[0],
@@ -95,7 +92,7 @@ def fig_matieres(data=data_mat):
                 valueformat=".0f",
                 valuesuffix="kg/jour",
                 arrangement="snap",
-                textfont={"size": 12,
+                textfont={"size": 13,
                           "color": "black"},
                 node={
                     "label": label[k],
@@ -134,11 +131,10 @@ def fig_matieres(data=data_mat):
             yanchor="top"
         )
     )
-    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    return graphJSON
+    return fig
 
 
-def fig_elec(data=data_elec):
+def fig_energ(data=data_energ):
     n, data_list, index, unite, updatemenus = config(data)
     label_name = ["Importation EDF", "Ensoleillement total", "Ensoleillement sur le four solaire"]
     label = config_label(label_name, data_list, unite)
@@ -164,6 +160,7 @@ def fig_elec(data=data_elec):
                 "source": [0, 1, 2],
                 "target": [3, 3, 3],
                 "value": data_list[0],
+                'hoverinfo': 'none',
                 "hoverlabel": {"font": {"size": 15}},
                 "label": ["Consomnation EDF", "Consomnation energie verte"],
                 "color": ["#AD724C", "#EDA20C", "#EDC00C"],
@@ -193,6 +190,7 @@ def fig_elec(data=data_elec):
                     "source": [0, 1, 2],
                     "target": [3, 3, 3],
                     "value": data_list[k],
+                    'hoverinfo': 'none',
                     "hoverlabel": {"font": {"size": 15}},
                     "label": ["Importation EDF", "Ensoleillement total", "Ensoleillement sur le four solaire"],
                     "color": ["#AD724C", "#EDA20C", "#EDC00C"],
@@ -216,9 +214,7 @@ def fig_elec(data=data_elec):
             xanchor="right",
             yanchor="top"
         ))
-
-    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    return graphJSON
+    return fig
 
 
 def fig_eaux(data=data_eau):
@@ -248,6 +244,7 @@ def fig_eaux(data=data_eau):
                 "source": [0, 1],
                 "target": [2, 2],
                 "value": data_list[0],
+                'hoverinfo': 'none',
                 "label": ["Eaux importées", "Eaux tombé"],
                 "color": ["#423DE6", "#4C95E6"],
 
@@ -276,6 +273,7 @@ def fig_eaux(data=data_eau):
                     "source": [0, 1],
                     "target": [2, 2],
                     "value": data_list[k],
+                    'hoverinfo': 'none',
                     "label": ["Eaux importées", "Eaux tombé"],
                     "color": ["#423DE6", "#4C95E6"],
 
@@ -298,5 +296,10 @@ def fig_eaux(data=data_eau):
             xanchor="right",
             yanchor="top"
         ))
-    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return fig
+
+
+def intoJSON(fig):
+    graphJSON = fig.to_json()
+    # graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON

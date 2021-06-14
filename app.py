@@ -16,25 +16,26 @@ def view_pres_proj():
 
 @app.route("/exploration/")
 def view_expl():
-    graph_matieres = sankeys.fig_matieres()
-    graph_elec = sankeys.fig_elec()
-    graph_eaux = sankeys.fig_eaux()
-    return render_template("exploration.html", graph_matieres=graph_matieres, graph_elec=graph_elec,
+    graph_matieres = sankeys.intoJSON(sankeys.fig_matieres())
+    graph_energ = sankeys.intoJSON(sankeys.fig_energ())
+    graph_eaux = sankeys.intoJSON(sankeys.fig_eaux())
+    return render_template("exploration.html", graph_matieres=graph_matieres, graph_energ=graph_energ,
                            graph_eaux=graph_eaux)
 
 @app.route("/exploration/matieres/")
 def view_matieres():
-    graph_matieres = sankeys.fig_matieres()
+    graph_matieres = sankeys.intoJSON(sankeys.fig_matieres())
     return render_template("matieres.html",graph_matieres=graph_matieres)
 
-@app.route("/exploration/electricite/")
-def view_electricite():
-    graph_elec = sankeys.fig_elec()
-    return render_template("electricite.html", graph_elec=graph_elec)
+
+@app.route("/exploration/energie/")
+def view_energ():
+    graph_energ = sankeys.intoJSON(sankeys.fig_energ())
+    return render_template("energie.html", graph_energ=graph_energ)
 
 @app.route("/exploration/eaux/")
 def view_eaux():
-    graph_eaux = sankeys.fig_eaux()
+    graph_eaux = sankeys.intoJSON(sankeys.fig_eaux())
     return render_template("eaux.html",graph_eaux=graph_eaux)
 
 
