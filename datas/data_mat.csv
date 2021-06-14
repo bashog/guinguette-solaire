@@ -1,6 +1,4 @@
-Date,Importations,Déchêts, val, Gaz
-Janvier, 2, 2, 1,3
-Février, 1, 4, 3,5
-Mars, 1,3,2,1
-Avril,2,4,5,3
-Mai, 3,4,1,2
+,Importations,Déchêts, val, Gaz
+Unité, kg/mois, kg/mois, kg/mois, kg/mois
+Avril,200.138,100,100,100
+Mai, 388.763,100,100,100

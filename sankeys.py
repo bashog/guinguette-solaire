@@ -13,6 +13,8 @@ img = Image.open('static/img/le-présage-3D.png')
 
 
 def config(data):
+    unite = data.iloc[0].values.tolist()
+    data = data.drop("Unité", inplace=False)
     index_list = data.index.tolist()
     n = len(index_list)
     buttons = []
@@ -34,13 +36,27 @@ def config(data):
             active=0,
             buttons=buttons
         )]
-    data_list = data_mat.values.tolist()
-    return n, data_list, index_list, updatemenus
+    data_list = data.values.tolist()
+    return n, data_list, index_list, unite, updatemenus
+
+
+def config_label(label_name, data_list, unite):
+    m, n = len(label_name), len(data_list)
+    label = []
+    for i in range(n):
+        temp = []
+        for j in range(m):
+            st = label_name[j] + " : " + str(data_list[i][j]) + " " + unite[j]
+            temp.append(st)
+        temp.append("")
+        label.append(temp)
+    return label
 
 
 def fig_matieres(data=data_mat):
-    n, data_list, index, updatemenus = config(data)
-
+    n, data_list, index, unite, updatemenus = config(data)
+    label_name = ["Importations", "Déchets", "Valorisation matière et organique", "Gaz à effet de serre"]
+    label = config_label(label_name, data_list, unite)
     fig = go.Figure()
 
     fig.add_trace(
@@ -49,23 +65,22 @@ def fig_matieres(data=data_mat):
             valueformat=".0f",
             valuesuffix="kg/jour",
             arrangement="snap",
-            textfont={"size": 15,
+            textfont={"size": 12,
                       "color": "black"},
             node={
-                "label": ["Importations", "Valorisation matière et organique", "Le Présage", "Déchets",
-                          "Gaz à effet de serre"],
-                "x": [0.05, 0.5, 0.5, 0.95, 0.95],
-                "y": [0.5, 0.6, 0.5, 0.9, 0.1],
+                "label": label[0],
+                "x": [0.05, 0.95, 0.5, 0.95, 0.5],
+                "y": [0.5, 0.9, 0.6, 0.1, 0.5],
                 "thickness": 1,
                 'hoverinfo': 'none',
                 "color": ["#668C4A", "#A6BF4B", '#FFFFFF', "#AD724C", "#2B4B61"],
                 # "hoverlabel": {"font": {"size": 15}},
                 'pad': 80},  # 10 Pixels
             link={
-                "source": [0, 2, 1, 2],
-                "target": [2, 3, 1, 4],
+                "source": [0, 4, 2, 4],
+                "target": [4, 1, 2, 3],
                 "value": data_list[0],
-                "label": ["Importations", "Déchets", "Valorisation matière et organique", "Gaz à effet de serre"],
+                'hoverinfo': 'none',
                 "color": ["#668C4A", "#AD724C", "#A6BF4B", "#2B4B61"],
                 "hoverlabel": {"font": {"size": 15}}
             }
@@ -80,23 +95,22 @@ def fig_matieres(data=data_mat):
                 valueformat=".0f",
                 valuesuffix="kg/jour",
                 arrangement="snap",
-                textfont={"size": 15,
+                textfont={"size": 12,
                           "color": "black"},
                 node={
-                    "label": ["Importations", "Valorisation matière et organique", "Le Présage", "Déchets",
-                              "Gaz à effet de serre"],
-                    "x": [0.05, 0.5, 0.5, 0.95, 0.95],
-                    "y": [0.5, 0.6, 0.5, 0.9, 0.1],
-                    "color": ["#668C4A", "#A6BF4B", '#FFFFFF', "#AD724C", "#2B4B61"],
+                    "label": label[k],
+                    "x": [0.05, 0.95, 0.5, 0.95, 0.5],
+                    "y": [0.5, 0.9, 0.6, 0.1, 0.5],
                     "thickness": 1,
-                    # "hoverlabel": {"font": {"size": 15}},
                     'hoverinfo': 'none',
+                    "color": ["#668C4A", "#A6BF4B", '#FFFFFF', "#AD724C", "#2B4B61"],
+                    # "hoverlabel": {"font": {"size": 15}},
                     'pad': 80},  # 10 Pixels
                 link={
-                    "source": [0, 2, 1, 2],
-                    "target": [2, 3, 1, 4],
-                    "value": data_list[0],
-                    "label": ["Importations", "Déchets", "Valorisation matière et organique", "Gaz à effet de serre"],
+                    "source": [0, 4, 2, 4],
+                    "target": [4, 1, 2, 3],
+                    "value": data_list[k],
+                    'hoverinfo': 'none',
                     "color": ["#668C4A", "#AD724C", "#A6BF4B", "#2B4B61"],
                     "hoverlabel": {"font": {"size": 15}}
                 }
@@ -125,7 +139,9 @@ def fig_matieres(data=data_mat):
 
 
 def fig_elec(data=data_elec):
-    n, data_list, index, updatemenus = config(data)
+    n, data_list, index, unite, updatemenus = config(data)
+    label_name = ["Importation EDF", "Ensoleillement total", "Ensoleillement sur le four solaire"]
+    label = config_label(label_name, data_list, unite)
 
     fig = go.Figure()
     fig.add_trace(
@@ -137,8 +153,7 @@ def fig_elec(data=data_elec):
             textfont={"size": 15,
                       "color": "black"},
             node={
-                "label": ["Importation EDF", "Ensoleillement total", "Ensoleillement sur le four solaire",
-                          "Le Présage"],
+                "label": label[0],
                 "x": [0.1, 0.1, 0.1, 0.7],
                 "y": [0.1, 0.5, 0.9, 0.5],
                 'hoverinfo': 'none',
@@ -167,8 +182,7 @@ def fig_elec(data=data_elec):
                 textfont={"size": 15,
                           "color": "black"},
                 node={
-                    "label": ["Importation EDF", "Ensoleillement total", "Ensoleillement sur le four solaire",
-                              "Le Présage"],
+                    "label": label[k],
                     "x": [0.1, 0.1, 0.1, 0.7],
                     "y": [0.1, 0.5, 0.9, 0.5],
                     'hoverinfo': 'none',
@@ -208,7 +222,10 @@ def fig_elec(data=data_elec):
 
 
 def fig_eaux(data=data_eau):
-    n, data_list, index, updatemenus = config(data)
+    n, data_list, index, unite, updatemenus = config(data)
+    label_name = ["Eaux importées", "Eaux tombé"]
+    label = config_label(label_name, data_list, unite)
+
     fig = go.Figure()
     fig.add_trace(
         go.Sankey(
@@ -220,7 +237,7 @@ def fig_eaux(data=data_eau):
             textfont={"size": 15,
                       "color": "black"},
             node={
-                "label": ["Eaux importées", "Eaux tombé", "Le Présage"],
+                "label": label[0],
                 "x": [0.1, 0.1, 0.9],
                 "y": [0.3, 0.7, 0.5],
                 "color": ["#423DE6", "#4C95E6", "#FFFFFF"],
@@ -248,7 +265,7 @@ def fig_eaux(data=data_eau):
                 textfont={"size": 15,
                           "color": "black"},
                 node={
-                    "label": ["Eaux importées", "Eaux tombé", "Le Présage"],
+                    "label": label[k],
                     "x": [0.1, 0.1, 0.9],
                     "y": [0.3, 0.7, 0.5],
                     "color": ["#423DE6", "#4C95E6", "#FFFFFF"],

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Electricité{% endblock %}
+{% block title %}Energie{% endblock %}
 
 {% block energies_active_bar %}active{% endblock %}
 
@@ -8,7 +8,7 @@
     <header class="bg-info py-5">
         <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
-                <h1 class="font-weight-bold">Les flux d'électricité</h1>
+                <h1 class="font-weight-bold">Les flux d'energies</h1>
             </div>
         </div>
     </header>
@@ -23,12 +23,15 @@
             Plotly.plot('bargraph',graphs2,{});
 
 
+
             </script>
         </div>
     </div>
 
     <div class="shadow-lg p-3 mb-5 bg-white rounded">
-        <p>Blabla elec</p>
+        <h3>On utilise la durée d’ouverture du restaurant par mois pour les calculs </h3>
+        <p>Service du midi : 5h de fonctionnement du lundi au vendredi. Service du soir : 3h du mercredi au vendredi
+        </p>
     </div>
 
 
